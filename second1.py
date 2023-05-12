@@ -12,9 +12,12 @@ os.environ['OPENAI_API_KEY'] = KEY
 storage_context = StorageContext.from_defaults(persist_dir='./storage')
 
 index = load_index_from_storage(storage_context)
-query_engin = index.as_query_engine() 
 
-question = input("Enter the question ")
-response = query_engin.query(question)
-print ("\n", response)
+def generate_response(prompt):
+	query_engin = index.as_query_engine() 
+
+	question = prompt
+	response = query_engin.query(question)
+	return str(response)
+	#print ("\n", response)
 
