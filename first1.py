@@ -8,9 +8,11 @@ import openai
 
 os.environ['OPENAI_API_KEY'] = KEY 
 
-documents = SimpleDirectoryReader("docs").load_data()
-index = GPTVectorStoreIndex.from_documents(documents)
 
-storage_context = StorageContext.from_defaults()
-index.storage_context.persist()
-print ("Done")
+def create_vector():
+	documents = SimpleDirectoryReader("data").load_data()
+	index = GPTVectorStoreIndex.from_documents(documents)
+
+	storage_context = StorageContext.from_defaults()
+	index.storage_context.persist("./vectordatabase")
+	print ("Done")
