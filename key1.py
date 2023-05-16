@@ -1,1 +1,1 @@
-KEY = "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"
+KEY = "ok"
