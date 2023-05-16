@@ -8,14 +8,13 @@ import os
 import openai
 
 os.environ['OPENAI_API_KEY'] = KEY 
+	
 
-storage_context = StorageContext.from_defaults(persist_dir='./storage')
-
-index = load_index_from_storage(storage_context)
 
 def generate_response(prompt):
+	storage_context = StorageContext.from_defaults(persist_dir="./vectordatabase")
+	index = load_index_from_storage(storage_context)
 	query_engin = index.as_query_engine() 
-
 	question = prompt
 	response = query_engin.query(question)
 	return str(response)
